@@ -2,7 +2,9 @@
     <div class="note-container">
         <p><span style="font-weight: bold">Title: </span>{{ note.title }}</p>
         <div class="btn-container">
-      <button class="edit-btn">Edit</button>
+     <router-link :to="`/edit/${note.id}`">
+       <button class="edit-btn">Edit</button>
+     </router-link>
       <button class="delete-btn">Delete</button>
     </div>
     </div>
@@ -29,7 +31,7 @@ export default {
   background-color: white;
   padding-top: 15px;
   padding-left: 15px;
-  cursor: pointer;
+
 }
 
 .btn-container{

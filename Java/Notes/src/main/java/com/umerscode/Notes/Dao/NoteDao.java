@@ -9,5 +9,6 @@ public interface NoteDao {
     List<Note> getAllNotes();
     Note createNote(Note note);
     Note getNoteById(int id);
+    Note updateNote(int id, Note note);
 
 }

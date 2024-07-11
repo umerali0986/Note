@@ -9,6 +9,14 @@ export default{
     
     CreateNote(newNote){
         return axios.post(`${baseUrl}/note`,newNote);
+    },
+
+    getNoteById(id){
+        return axios.get(`${baseUrl}/note/${id}`);
+    },
+
+    editNote(id, note){
+        return axios.put(`${baseUrl}/note/${id}`,note);
     }
 
 

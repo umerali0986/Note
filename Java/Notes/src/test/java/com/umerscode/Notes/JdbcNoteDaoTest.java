@@ -1,6 +1,7 @@
 package com.umerscode.Notes;
 
 import com.umerscode.Notes.Dao.JdbcNoteDao;
+import com.umerscode.Notes.Exception.DaoException;
 import com.umerscode.Notes.Models.Note;
 import org.junit.Before;
 import org.junit.Test;
@@ -61,6 +62,22 @@ public class JdbcNoteDaoTest extends BaseDaoTest{
 
         testNote.setId(createdNote.getId());
         assertionNoteMatch(testNote,createdNote);
+    }
+
+    @Test
+    public void updateNote_given_valid_id_return_updated_note(){
+        NOTE_1.setTitle("test1");
+
+        Note updatedNote = sut.updateNote(NOTE_1.getId(), NOTE_1);
+        assertNotNull(updatedNote,"updateNote() return null");
+        assertionNoteMatch(NOTE_1, updatedNote);
+    }
+
+    @Test
+    public void updateNote_given_invalid_id_should_throw_exception(){
+        NOTE_1.setTitle("test1");
+        assertThrows(DaoException.class,()->sut.updateNote(0, NOTE_1),"Something went wrong, Unable to update the note");
+
     }
 
 

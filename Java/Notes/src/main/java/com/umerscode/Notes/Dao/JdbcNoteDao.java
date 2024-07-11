@@ -85,6 +85,25 @@ public class JdbcNoteDao implements NoteDao{
         return note;
     }
 
+    @Override
+    public Note updateNote(int id, Note note) {
+
+        Note updatedNote = null;
+        String sql = "UPDATE notes SET title = ?, note = ? WHERE id = ?";
+
+        try{
+            int numberOfUpdatedRow = jdbcTemplate.update(sql, note.getTitle(), note.getNote(), id);
+            if(numberOfUpdatedRow == 1){
+                updatedNote = getNoteById(id);
+            }else {
+                throw new DaoException("Something went wrong, Unable to update the note");
+            }
+        }catch (CannotGetJdbcConnectionException e){
+            throw new DaoException("Unable to connect to database");
+        }
+        return updatedNote;
+    }
+
 
     public Note mapRowToNote(SqlRowSet row){
         Note note = new Note();
