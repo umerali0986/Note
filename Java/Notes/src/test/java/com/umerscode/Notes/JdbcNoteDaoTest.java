@@ -1,0 +1,73 @@
+package com.umerscode.Notes;
+
+import com.umerscode.Notes.Dao.JdbcNoteDao;
+import com.umerscode.Notes.Models.Note;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
+
+import javax.sql.DataSource;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+public class JdbcNoteDaoTest extends BaseDaoTest{
+
+    private final Note  NOTE_1 = new Note(1,"Grocery", "1.banana 2.tomato 3. onion");
+    private final Note  NOTE_2 = new Note(2,"ToDo", "1.study 2.soccer");
+
+    private JdbcNoteDao sut;
+
+    @Before
+    public void setUp(){
+        JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
+        sut = new JdbcNoteDao(jdbcTemplate);
+    }
+
+    @Test
+    public void getAllNotes_given_valid_values_return_list(){
+        List<Note> result = sut.getAllNotes();
+        assertNotNull(result);
+        assertionNoteMatch(NOTE_1,result.get(0));
+        assertionNoteMatch(NOTE_2,result.get(1));
+    }
+
+    @Test
+    public void getNoteById_given_valid_id_return_note(){
+
+        Note retreivedNote = sut.getNoteById(NOTE_1.getId());
+
+        assertNotNull(retreivedNote, "getNoteById with valid id passed returned null");
+        assertionNoteMatch(NOTE_1,retreivedNote);
+    }
+
+    @Test
+    public void getNoteById_given_invalid_id_return_null(){
+
+        Note retreivedNote = sut.getNoteById(0);
+
+        assertNull(retreivedNote, "getNoteById with invalid id passed returned note");
+    }
+
+    @Test
+    public void createNote_given_valid_note_return_createdNote(){
+        Note testNote = new Note("test1","test note");
+
+        Note createdNote = sut.createNote(testNote);
+        assertNotNull(createdNote,"createNote returned null");
+
+        testNote.setId(createdNote.getId());
+        assertionNoteMatch(testNote,createdNote);
+    }
+
+
+    public void assertionNoteMatch(Note expected, Note actual){
+
+        assertEquals(expected.getId(), actual.getId(),"Id doesn't match");
+        assertEquals(expected.getTitle(), actual.getTitle(),"Title doesn't match");
+        assertEquals(expected.getNote(), actual.getNote(),"Note doesn't match");
+    }
+}
