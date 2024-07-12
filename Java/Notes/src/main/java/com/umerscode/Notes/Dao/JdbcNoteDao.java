@@ -45,11 +45,11 @@ public class JdbcNoteDao implements NoteDao{
 
         Note createdNote = null;
 
-        String sql = "INSERT INTO notes (title, note) VALUES " +
-                "(?,?) RETURNING id;";
+        String sql = "INSERT INTO notes (title, note, is_favorite) VALUES " +
+                "(?,?,?) RETURNING id;";
 
         try{
-            int newNoteId = jdbcTemplate.queryForObject(sql, int.class, note.getTitle(), note.getNote());
+            int newNoteId = jdbcTemplate.queryForObject(sql, int.class, note.getTitle(), note.getNote(), note.isFavorite());
 
             if(newNoteId > 0){
                 note = getNoteById(newNoteId);
@@ -89,10 +89,10 @@ public class JdbcNoteDao implements NoteDao{
     public Note updateNote(int id, Note note) {
 
         Note updatedNote = null;
-        String sql = "UPDATE notes SET title = ?, note = ? WHERE id = ?";
+        String sql = "UPDATE notes SET title = ?, note = ?, is_favorite = ? WHERE id = ?";
 
         try{
-            int numberOfUpdatedRow = jdbcTemplate.update(sql, note.getTitle(), note.getNote(), id);
+            int numberOfUpdatedRow = jdbcTemplate.update(sql, note.getTitle(), note.getNote(),note.isFavorite(), id);
             if(numberOfUpdatedRow == 1){
                 updatedNote = getNoteById(id);
             }else {
@@ -100,8 +100,32 @@ public class JdbcNoteDao implements NoteDao{
             }
         }catch (CannotGetJdbcConnectionException e){
             throw new DaoException("Unable to connect to database");
+        }catch (DataIntegrityViolationException e){
+            throw new DaoException("Data Integrity violation exception");
         }
         return updatedNote;
+    }
+
+    @Override
+    public int deleteNoteById(int id) {
+        int numberOfRowUpdated = 0;
+
+        String sql = "DELETE FROM notes WHERE id = ?";
+
+        try{
+            numberOfRowUpdated = jdbcTemplate.update(sql, id);
+            if(numberOfRowUpdated != 1){
+                throw new DaoException("Something went wrong, Unable to update the note");
+            }
+        }
+        catch (CannotGetJdbcConnectionException e){
+            throw new DaoException("Unable to connect to database");
+        }catch (DataIntegrityViolationException e){
+            throw new DaoException("Data Integrity violation exception");
+        }
+
+
+        return numberOfRowUpdated;
     }
 
 
@@ -111,6 +135,7 @@ public class JdbcNoteDao implements NoteDao{
         note.setId(row.getInt("id"));
         note.setTitle(row.getString("title"));
         note.setNote(row.getString("note"));
+        note.setFavorite(row.getBoolean("is_favorite"));
 
         return note;
     }

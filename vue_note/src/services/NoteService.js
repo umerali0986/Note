@@ -17,6 +17,10 @@ export default{
 
     editNote(id, note){
         return axios.put(`${baseUrl}/note/${id}`,note);
+    },
+
+    deleteNoteById(id){
+        return axios.delete(`${baseUrl}/note/${id}`);
     }
 
 

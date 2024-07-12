@@ -41,4 +41,10 @@ public class NoteController {
     public Note updateNote(@PathVariable int id, @RequestBody Note note){
         return jdbcNoteDao.updateNote(id, note);
     }
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteNoteById(@PathVariable int id){
+        jdbcNoteDao.deleteNoteById(id);
+    }
 }

@@ -10,5 +10,6 @@ public interface NoteDao {
     Note createNote(Note note);
     Note getNoteById(int id);
     Note updateNote(int id, Note note);
+    int deleteNoteById(int id);
 
 }

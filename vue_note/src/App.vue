@@ -77,6 +77,8 @@ p{
 }
 
 header{
+        display: flex;
+        justify-content: space-between;
         position: fixed;
         top: 0px;
         left: 0px;

@@ -13,11 +13,14 @@ export default {
   components: {
     NoteCard
   },
+  computed:{
+
+  
+  },
   created(){
     NoteService.getAllNotes().then(response => {
       if(response.status === 200){
         this.$store.commit('SET_NOTE_COLLECTIONS', response.data);
-        console.log(this.$store.state.noteCollections);
 
       }
     }).catch(error => {

@@ -17,8 +17,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class JdbcNoteDaoTest extends BaseDaoTest{
 
-    private final Note  NOTE_1 = new Note(1,"Grocery", "1.banana 2.tomato 3. onion");
-    private final Note  NOTE_2 = new Note(2,"ToDo", "1.study 2.soccer");
+    private final Note  NOTE_1 = new Note(1,"Grocery", "1.banana 2.tomato 3. onion", false);
+    private final Note  NOTE_2 = new Note(2,"ToDo", "1.study 2.soccer",false);
 
     private JdbcNoteDao sut;
 
@@ -55,7 +55,7 @@ public class JdbcNoteDaoTest extends BaseDaoTest{
 
     @Test
     public void createNote_given_valid_note_return_createdNote(){
-        Note testNote = new Note("test1","test note");
+        Note testNote = new Note("test1","test note",false);
 
         Note createdNote = sut.createNote(testNote);
         assertNotNull(createdNote,"createNote returned null");
@@ -79,6 +79,20 @@ public class JdbcNoteDaoTest extends BaseDaoTest{
         assertThrows(DaoException.class,()->sut.updateNote(0, NOTE_1),"Something went wrong, Unable to update the note");
 
     }
+
+    @Test
+    public void deleteNoteById_given_valid_id_return_number_od_row_updated(){
+
+        int numberOfRowUpdated = sut.deleteNoteById(NOTE_1.getId());
+        assertEquals(1,numberOfRowUpdated,"deleteNoteById() returned incorrect number of row updated");
+    }
+
+    @Test
+    public void deleteNoteById_given_invalid_id_throw_exception(){
+
+      assertThrows(DaoException.class,()->sut.deleteNoteById(0),"Something went wrong, Unable to update the note");
+    }
+
 
 
     public void assertionNoteMatch(Note expected, Note actual){

@@ -13,6 +13,9 @@
             </div>
 
             <div class="btn">
+                <div>
+                <input type="checkbox" v-model="newNote.favorite"> <label for="favorite">Save as favorite</label>
+            </div>
                 <button type="submit" v-on:click.prevent="createNote()">Save</button>
             </div>
 
@@ -30,23 +33,28 @@ export default {
         return {
             newNote: {
                 title : '',
-                note : ''
+                note : '',
+                favorite: false
             }
         }
     },
     methods:{
         createNote(){
+            console.log(' Before Create Note view ' + this.newNote.favorite);
             NoteService.CreateNote(this.newNote)
-            .then(response => {
+            .then(response => {  
                 if(response.status === 201){
                     this.$store.state.noteCollections.push(response.data);
                     console.log(this.$store.state.noteCollections);
-                    alert('New note has been successfully added!');
+                    // alert('New note has been successfully added!');
                     this.$router.push('/');
                 }
             }).catch(error => {
                 console.error('Error: ', error);
             })
+
+            console.log(' After Create Note view ' + this.newNote.favorite);
+
         }
     }
 
@@ -65,7 +73,8 @@ export default {
 
 .btn {
     display: flex;
-    justify-content: end;
+    justify-content: space-between;
+    align-items: center;
     font-size: 20px;
     margin-top: 10px;
 }

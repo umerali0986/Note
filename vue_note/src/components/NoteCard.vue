@@ -5,7 +5,7 @@
      <router-link :to="`/edit/${note.id}`">
        <button class="edit-btn">Edit</button>
      </router-link>
-      <button class="delete-btn">Delete</button>
+      <button class="delete-btn"  v-on:click="deleteNoteById(note.id)">Delete</button>
     </div>
     </div>
     
@@ -13,9 +13,36 @@
 </template>
 
 <script>
+import NoteService from '@/services/NoteService';
+
 
 export default {
-  props:['note']
+  props:['note'],
+  data(){
+    return {
+
+    }
+  },
+  methods:{
+    deleteNoteById(id){
+     let userConfirmation = confirm("Are you sure you want to delete this note?");
+     
+     if(userConfirmation){
+      NoteService.deleteNoteById(id).then(response => {
+        if(response.status === 204){
+          
+          const updatedNoteCollections = 
+          this.$store.state.noteCollections.filter(function (currentNote){
+            return currentNote.id !== id;
+          })
+
+          this.$store.commit('SET_NOTE_COLLECTIONS', updatedNoteCollections);
+          alert("Deleted Successfully!")
+        }
+      })
+     }
+    }
+  }
 }
 
 

@@ -12,6 +12,9 @@
             </div>
 
             <div class="btn">
+                <div>
+                <input type="checkbox" v-model="currentNote.favorite"> <label for="favorite">Save as favorite</label>
+            </div>
                 <button type="submit" v-on:click.prevent="editNote()">Save</button>
             </div>
 
@@ -78,7 +81,8 @@ export default {
 
 .btn {
     display: flex;
-    justify-content: end;
+    justify-content: space-between;
+    align-items: center;
     font-size: 20px;
     margin-top: 10px;
 }

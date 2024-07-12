@@ -9,17 +9,18 @@
             </div>
         </router-link>
 
-        <div>
-            <img src="../assets/star-24.png" alt="star">
-            <p>Favorite</p>
-        </div>
-
+        <router-link to="/favorites">
+            <div>
+                <img src="../assets/star-24.png" alt="star">
+                <p>Favorite</p>
+            </div>
+        </router-link>
         <router-link to="/create">
-        <div>
-                    <img src="../assets/create-task-icon.png" alt="create-note">
-                    <p>Add Note</p>
-                </div>
-            </router-link>
+            <div>
+                <img src="../assets/create-task-icon.png" alt="create-note">
+                <p>Add Note</p>
+            </div>
+        </router-link>
         <!-- <Dialog>
             <DialogTrigger>
                
