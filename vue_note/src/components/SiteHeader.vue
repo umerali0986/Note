@@ -2,36 +2,39 @@
 
     <header>
         <h1>Tech Note</h1>
-        <div class="searchBar-container">
-            <input type="text" v-on:change="searchNote()" v-model="title" placeholder="Search by title">
+        <div class="searchBar-container" >
+            <input type="text"  v-on:input="searchNote($event)"  placeholder="Search by title">
         </div>
     </header>
 
 </template>
 
 <script>
+import NoteService from '@/services/NoteService';
+
 export default {
 
-    data() {
-        return {
-
-            title: ''
-
-        }
-    },
-
     methods: {
-        searchNote() {
+        searchNote(event) {
             const searchedResult = this.$store.state.noteCollections.filter(
                 function (note) {
-                    // console.log(this.title);
-                    return note.title !== "";
-                    // return note.includes(this.title);
+                    return note?.title.toLowerCase().includes(event.target.value.toLowerCase());
                 }
             );
 
+            // if user add a search value
+                if(event.target.value){
+                    this.$store.commit('SET_NOTE_COLLECTIONS', searchedResult);
+                }
+                // if user didn't add a search value
+                else{
+                    NoteService.getAllNotes().then(response => {
+      if(response.status === 200){
+        this.$store.commit('SET_NOTE_COLLECTIONS', response.data);
 
-            this.$store.commit('SET_NOTE_COLLECTIONS', searchedResult);
+      }
+    })
+                }
         }
     }
 }
