@@ -11,11 +11,8 @@ body {
     
   }
   
-  @media  (max-width:600px){
-    body{
-      padding-left: 30px;
-    }
-  }
+
+ 
   
   
   p{
