@@ -61,7 +61,7 @@ export default {
 body {
   background-color: rgb(234, 234, 234);
   position: relative;
-  height: 1000px !important;
+  height: auto;
   width: auto;
   padding-left: 180px;
   padding-top: 70px;
@@ -92,11 +92,14 @@ header{
     
 .container {
   display: flex;
+  height: auto;
+  width: 100%;
   /* height: 100% !important; */
   /* width: 100%; */
   left: 0;
   right: 0;
   bottom: 0;
+  
 
 }
 

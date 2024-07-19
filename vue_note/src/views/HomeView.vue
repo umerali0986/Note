@@ -44,8 +44,37 @@ export default {
   margin-top: 10px;
   margin-left: 15px;
   display: grid;
-  grid-template-columns: 400px  400px 400px ;
+  grid-template-columns: 1fr  1fr 1fr ;
   column-gap: 40px;
   row-gap: 40px;
+
+}
+
+@media (min-width:781px) and (max-width:1024px){
+  .main-container {
+  color: black;
+  width: 100%;
+  margin-top: 10px;
+  margin-left: 15px;
+  display: grid;
+  grid-template-columns: 1fr  1fr;
+  column-gap: 40px;
+  row-gap: 40px;
+
+}
+}
+
+@media (max-width:780px){
+  .main-container {
+  color: black;
+  width: 100%;
+  margin-top: 10px;
+  margin-left: 15px;
+  display: grid;
+  grid-template-columns: 1fr;
+  column-gap: 40px;
+  row-gap: 40px;
+
+}
 }
 </style>

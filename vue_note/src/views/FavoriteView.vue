@@ -11,7 +11,7 @@ export default {
     components:{
         NoteCard
     },
-,
+
     data() {
         return {
             favoriteNotes: null

@@ -44,6 +44,13 @@ export default {
 .searchBar-container {
     display: flex;
     align-items: center;
+    width: 400px;
+}
+
+@media (max-width:780px) {
+    .searchBar-container{
+        width: 200px;
+    }
 }
 
 .searchBar-container input {
@@ -51,7 +58,7 @@ export default {
     padding-left: 14px;
     margin-right: 10px;
     border-radius: 25px;
-    width: 400px;
+    width: 100%;
     color: white;
     background-color: rgb(3, 42, 81);
     box-shadow: -5px 5px 5px rgba(0, 0, 0, 0.3);
