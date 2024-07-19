@@ -1,0 +1,131 @@
+.searchBar-container {
+    display: flex;
+    align-items: center;
+    width: 400px;
+    background-color: lightblue;
+}
+
+.searchBar-container input {
+    padding: 7px;
+    padding-left: 14px;
+    margin-right: 10px;
+    border-radius: 25px;
+    width: 100%;
+    color: white;
+    background-color: rgb(3, 42, 81);
+    box-shadow: -5px 5px 5px rgba(0, 0, 0, 0.3);
+}
+
+.logo-container{
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+.logo-container img{
+    width: 34px;
+    height: 34px;
+    margin:5px;
+    display: none;
+}
+
+header{
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    background-color: rgb(255, 255, 255);
+    height: 60px;
+    color: black;
+    border-bottom: 1px solid rgb(216, 216, 216);
+   z-index: 200px;
+}
+
+@media  (max-width:600px){
+    .searchBar-container {
+        display: flex;
+        align-items: center;
+        width: 200px;
+        
+    }
+    
+    .sidebar-container {
+  display: none;
+      }
+
+      .logo-container img{
+        cursor: pointer;
+        display: inline;
+    }
+
+    .logo-container h1 {
+        margin: 5px;
+        margin-left: 18px;
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+}
+
+.logo-container h1 {
+    margin: 5px;
+    margin-left: 18px;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+
+/* --- SideBar ---*/
+.sidebars div {
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    height: 60px;
+    font-size: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    color: black;
+    cursor: pointer;
+
+}
+
+.sidebars img {
+    width: 30px;
+    margin-right: 10px;
+}
+
+.container {
+    display: flex;
+    /* height: 100% !important; */
+    /* width: 100%; */
+    left: 0;
+    right: 0;
+    bottom: 0;
+  
+  }
+  
+  
+  
+  /* .note-container{
+    width: 250px;
+    height: 65px;
+    background-color: white;
+    padding-top: 15px;
+    padding-left: 15px;
+    cursor: pointer;
+  } */
+  
+  
+  .sidebar-container {
+    background-color: rgb(255, 255, 255);
+    position: fixed;
+    top: 60px;
+    left: 0px;
+    bottom: 0px;
+    width: 180px;
+    color: black;
+    border-top: 1px solid rgb(216, 216, 216);
+    border-right: 1px solid rgb(232, 232, 232);
+  }

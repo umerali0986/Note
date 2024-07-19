@@ -11,5 +11,5 @@ public interface NoteDao {
     Note getNoteById(int id);
     Note updateNote(int id, Note note);
     int deleteNoteById(int id);
-
+    List<Note> searchNoteByTitle(String title);
 }

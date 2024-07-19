@@ -1,0 +1,21 @@
+<div class="main-container">
+    <div class="container-note">
+        <div class="note-title">
+            <p>Title:</p>
+            <input type="text" [(ngModel)]="newNote.title"  placeholder="Add title">
+        </div>
+
+        <div class="note">
+            <h1>Add Note</h1>
+            <textarea name="note"  id="note" [(ngModel)]="newNote.note"></textarea>
+        </div>
+
+        <div class="btn">
+            <div >
+            <input type="checkbox" [(ngModel)]="newNote.favorite" > <label for="favorite">Save as favorite</label>
+        </div>
+            <button type="submit" (click)="createNote()">Save</button>
+        </div>
+
+    </div>
+</div>

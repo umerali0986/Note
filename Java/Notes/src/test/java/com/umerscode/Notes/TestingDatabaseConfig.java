@@ -69,7 +69,7 @@ public class TestingDatabaseConfig {
     public void cleanup() throws SQLException {
         if (adminDataSource != null) {
             adminJdbcTemplate.update("DROP DATABASE \"" + DB_NAME + "\";");
-            adminDataSource.getConnection().close();
+             adminDataSource.getConnection().close();
             adminDataSource.destroy();
         }
     }

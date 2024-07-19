@@ -1,0 +1,13 @@
+<div class="main-container ">
+   
+    <div class="note-container" *ngFor="let note of notes">
+        <p style="padding-left: 15px;"><span style="font-weight: bold;">Title: </span>{{ note.title }}</p>
+        <div class="btn-container">
+
+       <button class="edit-btn" (click)="handleEditNotePage(note.id)">Edit</button>
+    
+      <button class="delete-btn" (click)="handleDeleteNote(note.id,note.title)">Delete</button>
+    </div>
+    </div>
+
+  </div>

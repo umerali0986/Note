@@ -1,0 +1,39 @@
+<header>
+  <div class="logo-container">
+    <img src="../assets/Hamburger_icon.svg.png" alt="">
+  <h1>Tech Note</h1>
+</div>
+  <div class="searchBar-container">
+    <input
+      type="text"
+      [(ngModel)]="titles"
+      (input)="handleSearchingNote()"
+      placeholder="Search by title"
+    />
+  </div>
+</header>
+
+<!-- <div class="container"> -->
+  <div class="sidebar-container">
+   
+    <div class="sidebars">
+      <div (click)="handleHomePage()">
+        <img src="../assets/images/homepage-icon.png" alt="Home">
+        <p >Home</p>
+      </div>
+
+      <div>
+        <img src="../assets/images/star-24.png" alt="star" />
+        <p>Favorite</p>
+      </div>
+      <div  (click)="handleAddNotePage()">
+        <img src="../assets/images/create-task-icon.png" alt="create-note" />
+        <p>Add Note</p>
+      </div>
+    </div>
+  </div>
+
+  
+    <router-outlet></router-outlet>
+
+<!-- </div> -->

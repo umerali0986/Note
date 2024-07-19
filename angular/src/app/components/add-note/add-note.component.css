@@ -1,0 +1,83 @@
+.main-container {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.btn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 20px;
+    margin-top: 10px;
+}
+
+.btn button {
+    cursor: pointer;
+    background-color: rgb(73, 199, 241);
+    padding: 10px 20px;
+    border-radius: 10px;
+    
+    font-size: 19px;
+    border: none;
+    transition: box-shadow 0.3s;
+}
+
+.btn button:hover {
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.3)
+}
+
+.container-note {
+    height: 600px;
+    width: 50%;
+}
+
+.note-title {
+    width: 100%;
+    display: block;
+    height: auto;
+    margin-bottom: 40px;
+   
+}
+
+.note-title input {
+    width: 100%;
+    height: auto;
+    padding: 10px;
+    font-size: 18px;
+    border-radius: 10px;
+    border: none;
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.2);
+    
+}
+
+.note-title p {
+    font-size: 23px;
+    font-weight: bold;
+    margin-bottom: 7px;
+    font-style: italic;
+}
+
+.note {
+    width: 100%;
+}
+
+.note h1 {
+    font-weight: bold;
+    font-size: 24px;
+    font-style: italic;
+}
+
+.note textarea {
+    height: 400px;
+    column-count: auto;
+    width: 100%;
+    padding: 7px;
+    border-radius: 7px;
+    margin-top: 5px;
+    border: none;
+    font-size: 18px;
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.2);
+}

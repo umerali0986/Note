@@ -47,4 +47,9 @@ public class NoteController {
     public void deleteNoteById(@PathVariable int id){
         jdbcNoteDao.deleteNoteById(id);
     }
+
+    @GetMapping("/search")
+    public List<Note> searchNoteByTitle(@RequestParam String title){
+        return jdbcNoteDao.searchNoteByTitle(title);
+    }
 }

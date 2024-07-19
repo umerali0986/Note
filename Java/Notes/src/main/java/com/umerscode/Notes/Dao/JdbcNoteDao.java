@@ -128,6 +128,25 @@ public class JdbcNoteDao implements NoteDao{
         return numberOfRowUpdated;
     }
 
+    @Override
+    public List<Note> searchNoteByTitle(String title) {
+        List<Note> notes = new ArrayList<>();
+
+        String sql ="SELECT * FROM notes where LOWER(title) LIKE LOWER(?)";
+
+        title = "%"+title+"%";
+        try{
+            SqlRowSet result = jdbcTemplate.queryForRowSet(sql, title);
+            while(result.next()){
+                notes.add(mapRowToNote(result));
+            }
+        }catch (CannotGetJdbcConnectionException e){
+            throw new DaoException("Unable to connect to database");
+        }
+
+        return notes;
+    }
+
 
     public Note mapRowToNote(SqlRowSet row){
         Note note = new Note();
