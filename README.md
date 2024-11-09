@@ -1,0 +1,5 @@
+![editing note](https://github.com/user-attachments/assets/d225ea9e-766c-4b62-b137-2cdd2b191692)
+![home_page](https://github.com/user-attachments/assets/cdede08c-dd74-4ede-a8fe-6d2051392da9)
+![phone-responsivenes](https://github.com/user-attachments/assets/96249205-7a60-49b3-988e-62b020e301be)
+![ipad-responsivenes](https://github.com/user-attachments/assets/fddcae27-3bd3-4c4d-90e7-85dddbe6ad76)
+![adding new note](https://github.com/user-attachments/assets/cd07fa52-ea51-4d21-91a3-9ab4a0bffb64)
